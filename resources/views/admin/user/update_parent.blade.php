@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1> Add_Parent / Spause </h1>
+                        <h1> Update_Parent / Spause </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active"> Add_Parent / Spause </li>
+                            <li class="breadcrumb-item active"> Update_Parent / Spause </li>
                         </ol>
                     </div>
                 </div>
@@ -29,47 +29,36 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> Add_Parent / Spause </h3>
+                                <h3 class="card-title"> Update_Parent / Spause </h3>
                             </div>
 
 
-                            <form action="{{ route('admin.addParent.store') }}" method="post">
+                            <form action="{{ route('admin.updateParent.update',$parent_data->id) }}" method="post">
                                 @csrf
+                                <input type="hidden" name="_method" value="put">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> First_name </label>
                                                 <input type="text" class="form-control" name="name"
-                                                    id="exampleInputEmail1" placeholder="Enter parent first name"
-                                                    style="@error('name')
-                                                    border-color:red
-                                                @enderror" value="{{old('name')}}">
+                                                    id="exampleInputEmail1"  value="{{old('name',$parent_data->name)}}">
                                             </div>
-                                            @error('name')
-                                                <p class = "text-danger"> * {{ $message }}</p>
-                                            @enderror
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Email </label>
                                                 <input type="text" class="form-control" name="email"
-                                                    id="exampleInputEmail1" placeholder="@example.com"
-                                                    style="@error('email')
-                                                    border-color:red
-                                                @enderror" value="{{old('email')}}">
+                                                    id="exampleInputEmail1"  value="{{old('email',$parent_data->email)}}">
                                             </div>
-                                            @error('email')
-                                                <p class = "text-danger"> * {{ $message }}</p>
-                                            @enderror
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Last_name </label>
                                                 <input type="text" class="form-control" name="lastname"
-                                                    id="exampleInputEmail1" placeholder="Enter parent last name" value="{{old('lastname')}}">
+                                                    id="exampleInputEmail1" value="{{old('lastname',$parent_data->lastname)}}">
                                             </div>
 
                                         </div>
@@ -78,7 +67,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Country </label>
                                                 <input type="text" class="form-control" name="country"
-                                                    id="exampleInputEmail1" placeholder="Enter parent country" value="{{old('country')}}">
+                                                    id="exampleInputEmail1" value="{{old('country',$parent_data->country)}}">
                                             </div>
 
                                         </div>
@@ -87,7 +76,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> State </label>
                                                 <input type="text" class="form-control" name="state"
-                                                    id="exampleInputEmail1" placeholder="Enter parent state" value="{{old('state')}}">
+                                                    id="exampleInputEmail1" value="{{old('state',$parent_data->state)}}">
                                             </div>
 
                                         </div>
@@ -96,7 +85,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Phone_number </label>
                                                 <input type="number" class="form-control" name="phone_number"
-                                                    id="exampleInputEmail1" placeholder="+12345566" value="{{old('phone_number')}}">
+                                                    id="exampleInputEmail1" value="{{old('phone_number',$parent_data->phone_number)}}">
                                             </div>
 
                                         </div>
@@ -105,7 +94,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Address </label>
                                                 <input type="text" class="form-control" name="address"
-                                                    id="exampleInputEmail1" placeholder="Enter parent address" value="{{old('address')}}">
+                                                    id="exampleInputEmail1" value="{{old('address',$parent_data->address)}}">
                                             </div>
 
                                         </div>
@@ -114,7 +103,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Mother_firstname </label>
                                                 <input type="text" class="form-control" name="mother_firstname"
-                                                    id="exampleInputEmail1" placeholder="Enter Mother first name" value="{{old('mother_firstname')}}">
+                                                    id="exampleInputEmail1" value="{{old('mother_firstname',$parent_data->mother_firstname)}}">
                                             </div>
 
                                         </div>
@@ -123,25 +112,12 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Mother_lastname </label>
                                                 <input type="text" class="form-control" name="mother_lastname"
-                                                    id="exampleInputEmail1" placeholder="Enter Mother last name" value="{{old('mother_lastname')}}">
+                                                    id="exampleInputEmail1" value="{{old('mother_lastname',$parent_data->mother_lastname)}}">
                                             </div>
 
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"> Genrate_password </label>
-                                                <input type="password" class="form-control" name="password"
-                                                    id="exampleInputEmail1" placeholder="Enter password"
-                                                    style="@error('password')
-                                                    border-color:red
-                                                @enderror">
-                                            </div>
-                                            @error('password')
-                                                <p class = "text-danger"> * {{ $message }}</p>
-                                            @enderror
-                                        </div>
-
+                                    
                                         {{--   <div class="col-md-4">
                                             <div class="form-check">
                                                 <input type="checkbox" name = "status" class="form-check-input"
@@ -154,7 +130,7 @@
                                 </div>
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

@@ -117,8 +117,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Class Title</th>
-                                            <th>Section_id</th>
+                                            <th>Subject Title</th>
+                                            <th>Course</th>
                                             <th>Created Time</th>
                                             <th>Status</th>
                                             <th>Edith</th>

@@ -14,12 +14,12 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div class="col-sm-6">
-                  <h1>Acedamic year</h1>
+                  <h1>Fees Head</h1>
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                      <li class="breadcrumb-item active">Acedamic year</li>
+                      <li class="breadcrumb-item active">Fees Head</li>
                   </ol>
               </div>
           </div>
@@ -34,7 +34,7 @@
 
                   <div class="card">
                       <div class="card-header">
-                          <h3 class="card-title">Acedamic Year Lists</h3>
+                          <h3 class="card-title">Fees Head</h3>
                       </div>
 
                       <div class="card-body">

@@ -41,9 +41,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"> Class_id </label>
                                                 <select class="form-control" name="class_id" id=""
-                                                    style="@error('class_id')
-                                                border-color:red
-                                            @enderror">
+                                                    >
                                                     <option value="" disabled selected>--Select Class--</option>
                                                     @foreach ($class_data as $item)
                                                         <option value="{{ $item->id }}">{{ $item->class_title }}

@@ -57,6 +57,7 @@
                                       <th>Created_Time</th>
                                       <th>Edith</th>
                                       <th>Delete</th>
+                                      <th>Register_child</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -64,7 +65,7 @@
                                   <tr>
                                       <td>{{$item->id}}</td>
                                       <td>{{$item->name}}</td>
-                                      <td>{{$item->last_name}}</td>
+                                      <td>{{$item->lastname}}</td>
                                       <td>{{$item->email}}</td>
                                       <td>{{$item->country}}</td>
                                       <td>{{$item->state}}</td>
@@ -73,9 +74,10 @@
                                       <td>{{$item->mother_firstname}}</td>
                                       <td>{{$item->mother_lastname}}</td>
                                       <td>{{$item->created_at}}</td>
-                                      <td><a href="{{-- {{route('admin.feeStructure_edith', $item->id)}} --}}" class = "btn btn-primary">Edith</a></td>
+                                      <td><a href="{{route('admin.parent_edith', $item->id)}}" class = "btn btn-primary">Edith</a></td>
                                       <td><a href="{{-- {{route('admin.feeStructure_delete', $item->id)}} --}}" class="btn btn-danger" onclick = "confirmation(event)">Delete</a></td>
-                                  </tr>
+                                      <td><a href="{{route('admin.parentStudent_register', $item->id)}}" class = "btn btn-outline-warning" style="background-color: lightcoral">Register Student</a></td>
+                                    </tr>
                                 @endforeach
                               </tbody>
                               <tfoot>
@@ -93,6 +95,7 @@
                                     <th>Created_Time</th>
                                     <th>Edith</th>
                                     <th>Delete</th>
+                                    <th>Register_child</th>
                                 </tr>
                               </tfoot>
                           </table>

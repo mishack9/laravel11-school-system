@@ -277,7 +277,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{{route('admin.student.manage')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Manage Student

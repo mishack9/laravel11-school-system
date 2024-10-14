@@ -9,6 +9,7 @@ use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\ManageuserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Models\Acedamicyear;
 
@@ -18,6 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth', 'student'])->group(function(){
+    Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+    Route::get('logout', [StudentController::class, 'logout']);
+});
+
+
+Route::middleware(['guest', 'student.guest'])->group(function(){
+    Route::get('student/login', [StudentController::class, 'student_login'])->name('student.login');
+    Route::post('student/login/authenticate', [StudentController::class, 'authenticate'])->name('studentLogin');
+
+});
+
+       
+       
+    
 
 
 
@@ -30,7 +46,7 @@ Route::group(['prefix'=> 'admin'], function(){
         Route::post('/login', [AdminController::class, 'authenticate'])->name('adminLogin');
         Route::get('register', [AdminController::class, 'registerForm'])->name('admin.register');
         Route::post('register', [AdminController::class, 'register'])->name('adminRegister');
-
+        
      });
 
      Route::group(['middleware' => 'admin.auth'], function(){
@@ -93,6 +109,16 @@ Route::group(['prefix'=> 'admin'], function(){
 
         Route::get('manage_parent/index/manage', [ManageuserController::class, 'manage_parent'])->name('admin.manageParent');
         Route::get('manage_parent/index/create', [ManageuserController::class, 'createParent'])->name('admin.addParent');
+        Route::post('manage_parent/index/store', [ManageuserController::class, 'store'])->name('admin.addParent.store');
+        Route::get('manage_parent/index/edith/{id}', [ManageuserController::class, 'edith'])->name('admin.parent_edith');
+        Route::put('manage_parent/index/update/{id}', [ManageuserController::class, 'update'])->name('admin.updateParent.update');
+        Route::get('manage_parent/index/create/child/{id}', [ManageuserController::class, 'createChild'])->name('admin.parentStudent_register');
+        Route::post('manage_parent/index/store/child', [ManageuserController::class, 'storeChild'])->name('admin.addStudent.store');
+        Route::get('manage_student/index/manage', [ManageuserController::class, 'index_student'])->name('admin.student.manage');
+        Route::get('manage_student/index/edith/{id}', [ManageuserController::class, 'edith_student'])->name('admin.student_edith');
+        Route::put('manage_student/index/update/{id}', [ManageuserController::class, 'update_student'])->name('admin.updateStudent.update');
+        Route::get('manage_student/index/delete/{id}', [ManageuserController::class, 'delete_student'])->name('admin.student_delete');
+
      });
 
 });
